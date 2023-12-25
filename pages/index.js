@@ -1,12 +1,22 @@
-import { useState } from 'react';
-import DynamicTooltip from '../components/DynamicTooltip';
+import React, { useState } from "react";
+import DynamicTooltip from "../components/DynamicTooltip";
 
 export default function Home() {
   const [showTooltip, setShowTooltip] = useState(false);
 
+  const handleMouseOver = () => {
+    setShowTooltip(true);
+  };
+
+  const handleMouseOut = () => {
+    setShowTooltip(false);
+  };
+
   return (
     <div>
-     <span >Hover over this text to see the dynamic tooltip.</span>
+      <span onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+        Hover over this text to see the dynamic tooltip.
+      </span>
       {showTooltip && <DynamicTooltip />}
     </div>
   );
